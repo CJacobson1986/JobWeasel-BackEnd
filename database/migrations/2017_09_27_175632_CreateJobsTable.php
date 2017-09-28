@@ -18,15 +18,15 @@ class CreateJobsTable extends Migration
 
           # post job listing form data
           $table->string('name');
-          $table->int('user_id');
+          $table->integer('user_id');
           $table->longText('description');
-          $table->int('workers_needed');
-          $table->int('budget');
+          $table->integer('workers_needed');
+          $table->integer('budget');
 
           # administration
-          $table->bool('filled');
+          $table->boolean('filled')->default(0);
           $table->timestamps();
-        })
+        });
     }
 
     /**

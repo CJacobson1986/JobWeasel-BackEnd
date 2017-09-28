@@ -17,11 +17,11 @@ class CreateUserSkillsTable extends Migration
            $table->increments('id');
 
            # backend
-           $table->int('user_id');
-           $table->int('skill_id');
+           $table->integer('user_id');
+           $table->integer('skill_id');
 
            $table->timestamps();
-         })
+         });
      }
 
      /**

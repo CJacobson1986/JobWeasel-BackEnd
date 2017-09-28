@@ -18,9 +18,9 @@ class CreateRolesTable extends Migration
 
             # administrator
             $table->string('name');
-            // 0: admin
-            // 1: job_poster
-            // 2: job_seeker
+            // 1: admin
+            // 2: job_poster
+            // 3: job_seeker
 
             $table->timestamps();
         });

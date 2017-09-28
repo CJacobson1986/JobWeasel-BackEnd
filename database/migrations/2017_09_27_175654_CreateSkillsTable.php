@@ -18,7 +18,9 @@ class CreateSkillsTable extends Migration
 
           # administrator
           $table->string('name');
-        })
+
+          $table->timestamps();
+        });
     }
 
     /**

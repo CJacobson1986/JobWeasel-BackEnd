@@ -17,14 +17,14 @@ class CreateApplicationsTable extends Migration
            $table->increments('id');
 
            # backend
-           $table->int('user_id');
-           $table->int('job_id');
-           $table->bool('applicant_reviewed'); // default: false
-           $table->bool('employer_approves'); // default: false
-           $table->bool('employee_accepts'); // default: false
+           $table->integer('user_id');
+           $table->integer('job_id');
+           $table->boolean('applicant_reviewed')->default(0);
+           $table->boolean('employer_approves')->default(0);
+           $table->boolean('employee_accepts')->default(0);
 
            $table->timestamps();
-         })
+         });
      }
 
      /**

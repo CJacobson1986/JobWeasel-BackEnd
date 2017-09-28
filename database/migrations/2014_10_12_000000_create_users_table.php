@@ -22,15 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             # profile form data
-            $table->string('location'); // default: ""
-            $table->int('phone'); // default: 0
+            $table->string('location')->default('');
+            $table->integer('phone')->default(0);
             $table->longText('bio'); // default: ""
 
             # backend
-            $table->integer('roleID'); // 0: admin, 1: job_poster, 2: job_seeker
-            $table->bool('availability'); // default: true
-            $table->bool('reviewed'); // default: false
-            $table->bool('approved'); // default: false
+            $table->integer('roleID'); // 1: admin, 2: job_poster, 3: job_seeker
+            $table->boolean('availability')->default(1);
+            $table->boolean('reviewed')->default(0);
+            $table->boolean('approved')->default(0);
 
             $table->rememberToken();
             $table->timestamps();
