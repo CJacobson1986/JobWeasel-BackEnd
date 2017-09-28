@@ -15,10 +15,23 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+
+            # sign up form data
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('roleID');
+
+            # profile form data
+            $table->string('location')->default('');
+            $table->integer('phone')->default(0);
+            $table->longText('bio'); // default: ""
+
+            # backend
+            $table->integer('roleID'); // 1: job_poster, 2: job_seeker
+            $table->boolean('availability')->default(1);
+            $table->boolean('reviewed')->default(0);
+            $table->boolean('approved')->default(0);
+
             $table->rememberToken();
             $table->timestamps();
         });
