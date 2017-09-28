@@ -17,6 +17,7 @@ class UserController extends Controller
     $this->middleware('jwt.auth', ['only' => ['get', 'update']]);
   }
 
+  # token -> user
   public function get() {
     $id = Auth::id();
     $user = User::find($id);
@@ -30,16 +31,28 @@ class UserController extends Controller
     ]);
   }
 
+  # ?page=pageNum -> users
   public function index() {
-    $users = User::orderBy('id', 'asc')->paginate(5);
+    $users = User::orderBy('id', 'asc')->paginate(25);
 
     return Response::json(['users' => $users]);
   }
 
+  # id -> user
+  public function show($id) {
+    $user = User::find($id);
+    if(empty($user)) {
+      return Response::json(['error' => 'User does not exist', 'id' => $id]);
+    }
+
+    return Response::json(['user' => $user]);
+  }
+
+  # name, email, password -> user
   public function store(Request $request) {
     $rules = [
-      'email' => 'required',
       'name' => 'required',
+      'email' => 'required',
       'password' => 'required'
     ];
 
@@ -49,8 +62,13 @@ class UserController extends Controller
     }
 
     $email = $request->input('email');
+    $check_email = User::where('email', '=', $email)->first();
+    if(!empty($check_email)) {
+      return Response::json(['error' => 'That email is already taken.']);
+    }
+
     $name =  $request->input('name');
-    $role = $request->input('role');
+    $role = $request->input('role_id');
     $password = $request->input('password');
     $password = Hash::make($password);
 
@@ -62,9 +80,13 @@ class UserController extends Controller
     $user->bio = "";
     $user->save();
 
-    return Response::json(['success' => 'Thanks for signing up!']);
+    return Response::json([
+      'success' => 'Thanks for signing up!',
+      'user' => $user
+    ]);
   }
 
+  # token, bio, phone, location -> user
   public function update(Request $request) {
     $rules = [
       'bio' => 'required',
@@ -98,6 +120,7 @@ class UserController extends Controller
     ]);
   }
 
+  # email, password -> token
   public function signIn(Request $request) {
     $rules = [
       'email' => 'required',

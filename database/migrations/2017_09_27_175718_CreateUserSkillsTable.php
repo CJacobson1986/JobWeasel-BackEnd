@@ -13,7 +13,7 @@ class CreateUserSkillsTable extends Migration
      */
      public function up()
      {
-         Schema::create('assignments', function (Blueprint $table) {
+         Schema::create('user_skills', function (Blueprint $table) {
            $table->increments('id');
 
            # backend
@@ -31,6 +31,6 @@ class CreateUserSkillsTable extends Migration
       */
      public function down()
      {
-         Schema::dropIfExists('assignments');
+         Schema::dropIfExists('user_skills');
      }
 }

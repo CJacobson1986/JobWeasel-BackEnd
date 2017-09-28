@@ -9,21 +9,21 @@ use Purifier;
 use Auth;
 use JWTAuth;
 use App\Skill;
+use App\UserSkill;
 use App\User;
 
-class SkillsController extends Controller
+class UserSkillsController extends Controller
 {
   public function __construct() {
     $this->middleware('jwt.auth', ['only' => ['store']]);
   }
 
-  public function index() {
-    $skills = Skill::all();
+  public function index($id) {
+    $skills = Skill::all()->where('user_id', $id);
 
     return Response::json(['skills' => $skills]);
   }
 
-  # token, name -> skill
   public function store(Request $request) {
     $id = Auth::id();
     $user = User::find($id);
@@ -32,7 +32,7 @@ class SkillsController extends Controller
     }
 
     $rules = [
-      'name' => 'required',
+      'skill_id' => 'required',
     ];
 
     $validator = Validator::make(Purifier::clean($request->all()), $rules);
@@ -40,10 +40,14 @@ class SkillsController extends Controller
       return Response::json(['error' => 'Please fill out all fields.']);
     }
 
-    $skill = new Skill;
-    $skill->name = $request->input('name');
-    $skill->save();
+    $userSkill = new UserSkill;
+    $userSkill->skill_id = $request->input('skill_id');
+    $userSkill->user_id = $id;
+    $userSkill->save();
 
-    return Response::json(['success' => 'Skill added', 'skill' => $skill]);
+    return Response::json([
+      'success' => 'UserSkill added',
+      'user_skill' => $userSkill
+    ]);
   }
 }
