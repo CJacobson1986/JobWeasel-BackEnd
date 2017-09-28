@@ -22,6 +22,8 @@ class CreateJobsTable extends Migration
           $table->longText('description');
           $table->integer('workers_needed');
           $table->integer('budget');
+          $table->integer('start_date');
+          $table->integer('time_frame');
 
           # administration
           $table->boolean('filled')->default(0);
