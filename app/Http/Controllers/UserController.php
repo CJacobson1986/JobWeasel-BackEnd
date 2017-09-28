@@ -135,6 +135,7 @@ class UserController extends Controller
     $email = $request->input('email');
     $password = $request->input('password');
     $credentials = compact('email', 'password');
+
     $token = JWTAuth::attempt($credentials);
 
     if ($token == false) {
@@ -143,7 +144,7 @@ class UserController extends Controller
     else {
       return Response::json([
         'token' => $token,
-        'success' => 'Logged in successfully.'
+        'success' => 'Logged in successfully.',
       ]);
     }
   }

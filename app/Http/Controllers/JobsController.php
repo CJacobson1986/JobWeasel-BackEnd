@@ -25,6 +25,7 @@ class JobsController extends Controller
     return Response::json(['jobs' => $jobs]);
   }
 
+  # id -> job
   public function show($id) {
     $job = Job::find($id);
     if(empty($job)) {
@@ -40,6 +41,9 @@ class JobsController extends Controller
     $user = User::find($user_id);
     if(empty($user)) {
       return Response::json(['error' => 'User does not exist', 'id' => $user_id]);
+    }
+    if ($user->role_id != 1) {
+      return Response::json(['error' => 'Your account is not authroized to post job listings']);
     }
 
     $rules = [

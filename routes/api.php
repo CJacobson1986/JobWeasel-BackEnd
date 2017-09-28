@@ -31,4 +31,9 @@ Route::get('showJob/{id}', 'JobsController@show');
 Route::post('postJob', 'JobsController@store');
 Route::post('editJob', 'JobsController@update');
 
+Route::get('getApplications/{id}', 'ApplicationsController@index');
+Route::post('submitApplication', 'ApplicationsController@store');
+Route::post('reviewApplication', 'ApplicationsController@updateEmployer');
+Route::post('acceptOffer', 'ApplicationsController@updateEmployee');
+
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
