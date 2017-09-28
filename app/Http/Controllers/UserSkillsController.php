@@ -24,6 +24,7 @@ class UserSkillsController extends Controller
     return Response::json(['skills' => $skills]);
   }
 
+  # token, skill_id -> user_skill
   public function store(Request $request) {
     $id = Auth::id();
     $user = User::find($id);
