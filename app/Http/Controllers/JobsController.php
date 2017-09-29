@@ -43,7 +43,10 @@ class JobsController extends Controller
       return Response::json(['error' => 'User does not exist', 'id' => $user_id]);
     }
     if ($user->role_id != 1) {
-      return Response::json(['error' => 'Your account is not authroized to post job listings']);
+      return Response::json([
+        'error' => 'Your account is not authroized to post job listings',
+        'user' => $user,
+      ]);
     }
 
     $rules = [

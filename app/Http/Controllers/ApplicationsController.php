@@ -37,7 +37,6 @@ class ApplicationsController extends Controller
   # user_id, job_id -> application
   public function store(Request $request) {
     $rules = [
-      'user_id' => 'required',
       'job_id' => 'required',
     ];
 
@@ -49,18 +48,24 @@ class ApplicationsController extends Controller
     $job_id = $request->input('job_id');
     $user_id = Auth::id();
     $job = Job::find($job_id);
-    $user = User::find($job_id);
+    $user = User::find($user_id);
     if(empty($job)) {
       return Response::json([
         'error' => 'Job posting not found',
         'job_id' => $job_id
       ]);
     }
+    // if($user->role_id != 2) {
+    //   return Response::json([
+    //     'error' => 'Your account is not authorized to post job applications.',
+    //     'user' => $user
+    //   ]);
+    // }
 
     $application = new Application;
     $application->user_id = $user_id;
     $application->job_id = $job_id;
-    $application->save()
+    $application->save();
 
     return Response::json([
       'success' => 'Application successfully submitted.',
@@ -91,7 +96,7 @@ class ApplicationsController extends Controller
     $approval = $request->input('employer_approves');
     $application->applicant_reviewed = 1;
     $application->employer_approves = $approval;
-    $application->save()
+    $application->save();
 
     return Response::json([
       'success' => 'Job application response saved!',
@@ -120,7 +125,7 @@ class ApplicationsController extends Controller
       ]);
     }
 
-    $applicant_reviewed = $application->applicant_reviewed
+    $applicant_reviewed = $application->applicant_reviewed;
     $employer_approves = $application->employer_approves;
 
     if(!($applicant_reviewed && $employer_approves)) {
