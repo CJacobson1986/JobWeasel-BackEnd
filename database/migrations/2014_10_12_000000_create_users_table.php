@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->longText('bio'); // default: ""
 
             # backend
-            $table->integer('roleID'); // 1: job_poster, 2: job_seeker
+            $table->integer('role_id'); // 1: job_poster, 2: job_seeker
             $table->boolean('availability')->default(1);
             $table->boolean('reviewed')->default(0);
             $table->boolean('approved')->default(0);

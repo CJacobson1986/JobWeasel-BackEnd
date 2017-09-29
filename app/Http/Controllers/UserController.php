@@ -53,7 +53,8 @@ class UserController extends Controller
     $rules = [
       'name' => 'required',
       'email' => 'required',
-      'password' => 'required'
+      'password' => 'required',
+      'role_id' => 'required'
     ];
 
     $validator = Validator::make(Purifier::clean($request->all()), $rules);
@@ -76,7 +77,7 @@ class UserController extends Controller
     $user->email = $email;
     $user->name = $name;
     $user->password = $password;
-    $user->roleID = $role;
+    $user->role_id = $role;
     $user->bio = "";
     $user->save();
 
@@ -135,6 +136,7 @@ class UserController extends Controller
     $email = $request->input('email');
     $password = $request->input('password');
     $credentials = compact('email', 'password');
+
     $token = JWTAuth::attempt($credentials);
 
     if ($token == false) {
@@ -143,7 +145,7 @@ class UserController extends Controller
     else {
       return Response::json([
         'token' => $token,
-        'success' => 'Logged in successfully.'
+        'success' => 'Logged in successfully.',
       ]);
     }
   }
