@@ -23,7 +23,8 @@ Route::post('editUser', 'UserController@update');
 Route::get('getSkills', 'SkillsController@index');
 Route::post('addSkill', 'SkillsController@store');
 
-Route::get('getUserSkills/{id}', 'UserSkillsController@index');
+Route::get('getUserSkills', 'UserSkillsController@index');
+Route::get('getUserSkills/{id}', 'UserSkillsController@show');
 Route::post('addUserSkill', 'UserSkillsController@store');
 
 Route::get('getJobs', 'JobsController@index');
