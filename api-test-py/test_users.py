@@ -61,7 +61,7 @@ class TestUsers(ApiTestCase):
             "error" in bad_response
         )
 
-    def test_show(self):
+    def test_show_user(self):
         data = self.get_sign_up_data(1)
         new_user = self.make_new_user(data)
 
@@ -73,7 +73,7 @@ class TestUsers(ApiTestCase):
             data["name"], user["name"]
         )
 
-    def test_index(self):
+    def test_get_users(self):
         data = self.get_sign_up_data(1)
         self.make_new_user(data)
 
@@ -85,7 +85,7 @@ class TestUsers(ApiTestCase):
             "data" in response["users"]
         )
 
-    def test_update(self):
+    def test_edit_user(self):
         data = self.get_sign_up_data(1)
         token = self.sign_in_new_user(data)
 
