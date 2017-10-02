@@ -18,10 +18,25 @@ class UserSkillsController extends Controller
     $this->middleware('jwt.auth', ['only' => ['store']]);
   }
 
-  public function index($id) {
-    $skills = Skill::all()->where('user_id', $id);
+  public function index() {
+    $userSkills = UserSkill::all();
 
-    return Response::json(['skills' => $skills]);
+    return Response::json(['user_skills' => $userSkills]);
+  }
+
+  public function show($id) {
+    $id = (int) $id;
+    $matches = UserSkill::where('user_id', $id)->get();
+    $skills = [];
+    foreach ($matches as $match) {
+      $skill = Skill::find($match->skill_id);
+      array_push($skills, $skill);
+    }
+
+    return Response::json([
+      'skills' => $skills,
+      'id' => $id
+    ]);
   }
 
   # token, skill_id -> user_skill

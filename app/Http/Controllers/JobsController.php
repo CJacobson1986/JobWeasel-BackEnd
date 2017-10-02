@@ -20,7 +20,7 @@ class JobsController extends Controller
 
   # ?page=pageNum -> jobs
   public function index() {
-    $jobs = User::orderBy('id', 'asc')->paginate(25);
+    $jobs = Job::orderBy('id', 'asc')->paginate(25);
 
     return Response::json(['jobs' => $jobs]);
   }
@@ -69,7 +69,7 @@ class JobsController extends Controller
     $job->description = $request->input('description');
     $job->budget = $request->input('budget');
     $job->workers_needed = $request->input('workers_needed');
-    $job->start_date = $request->input('start_date');
+    $job->start_date = date("Y-m-d", strtotime($request->input('start_date')));
     $job->time_frame = $request->input('time_frame');
     $job->save();
 
@@ -93,7 +93,8 @@ class JobsController extends Controller
       'workers_needed' => 'required',
       'budget' => 'required',
       'start_date' => 'required',
-      'time_frame' => 'required'
+      'time_frame' => 'required',
+      'job_id' => 'required'
     ];
 
     $validator = Validator::make(Purifier::clean($request->all()), $rules);

@@ -143,9 +143,11 @@ class UserController extends Controller
       return Response::json(['error' => 'Wrong Email/Password']);
     }
     else {
+      $user = User::find(Auth::id());
       return Response::json([
         'token' => $token,
         'success' => 'Logged in successfully.',
+        'user' => $user
       ]);
     }
   }

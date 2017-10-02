@@ -42,8 +42,19 @@ class TestUsers(TestCase):
 
         return data
 
-    def post(self, route, data):
-        response = requests.post(self.api_root + route, data=data)
+    def get_bio_data(self):
+        data = {
+            User.BIO: self.rand_arg(),
+            User.LOCATION: self.rand_arg(),
+            User.PHONE: random.randint(0, 9)
+        }
+
+        return data
+
+    def post(self, route, data, headers=None):
+        if not headers:
+            headers = {}
+        response = requests.post(self.api_root + route, data=data, headers=headers)
 
         return response
 
@@ -53,10 +64,19 @@ class TestUsers(TestCase):
         if not headers:
             headers = {}
 
-        return requests.get(self.api_root + route, params=params, headers=headers)
+        response = requests.get(self.api_root + route, params=params, headers=headers)
+
+        return response
 
     def getUser(self, token):
         user = self.get("getUser", headers={
+            "Authorization": "Bearer " + token
+        }).json()["user"]
+
+        return user
+
+    def editUser(self, data, token):
+        user = self.post("editUser", data, headers={
             "Authorization": "Bearer " + token
         }).json()["user"]
 
@@ -132,8 +152,32 @@ class TestUsers(TestCase):
         )
 
     def test_index(self):
-        pass
+        response = self.get('getUsers').json()
+        self.assertTrue(
+            "users" in response
+        )
+        self.assertTrue(
+            "data" in response["users"]
+        )
 
     def test_update(self):
-        pass
+        data = self.get_sign_up_data(1)
+        self.post('signUp', data).json()
+        response = self.post("signIn", data).json()
 
+        token = response["token"]
+        update_data = self.get_bio_data()
+        self.editUser(update_data, token)
+
+        user_id = response['user']['id']
+        user = self.get("showUser/" + str(user_id)).json()['user']
+
+        self.assertEqual(
+            user[User.BIO], update_data[User.BIO]
+        )
+        self.assertEqual(
+            user[User.LOCATION], update_data[User.LOCATION]
+        )
+        self.assertEqual(
+            user[User.PHONE], update_data[User.PHONE]
+        )
