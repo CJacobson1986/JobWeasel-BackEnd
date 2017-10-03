@@ -19,9 +19,9 @@ class CreateApplicationsTable extends Migration
            # backend
            $table->integer('user_id');
            $table->integer('job_id');
-           $table->boolean('applicant_reviewed')->default(0);
-           $table->boolean('employer_approves')->default(0);
-           $table->boolean('employee_accepts')->default(0);
+           $table->boolean('applicant_reviewed')->nullable()->default(0);
+           $table->boolean('employer_approves')->nullable()->default(0);
+           $table->boolean('employee_accepts')->nullable()->default(0);
 
            $table->timestamps();
          });

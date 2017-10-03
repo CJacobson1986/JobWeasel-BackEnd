@@ -18,6 +18,7 @@ class ApplicationsController extends Controller
   public function __construct() {
     $this->middleware('jwt.auth', ['only' => [
       'get',
+      'store',
       'updateEmployer',
       'updateEmployee'
       ]]);
@@ -25,12 +26,12 @@ class ApplicationsController extends Controller
 
   # id -> applications
   public function index($id) {
-    $applications = Application::all()->
-      where('job_id', '=', $id)->
-      where('applicant_reviewed', '=', 0);
+    $applications = Application::where('job_id', '=', $id)->
+      where('applicant_reviewed', '=', 0)->
+      orderBy('id', 'desc')->get();
 
     return Response::json([
-      'applications' => $applications
+      'applications' => $applications->toArray()
     ]);
   }
 
@@ -65,6 +66,9 @@ class ApplicationsController extends Controller
     $application = new Application;
     $application->user_id = $user_id;
     $application->job_id = $job_id;
+    $application->applicant_reviewed = 0;
+    $application->employee_accepts = 0;
+    $application->employer_approves = 0;
     $application->save();
 
     return Response::json([
@@ -75,18 +79,28 @@ class ApplicationsController extends Controller
 
   # token, application_id, employer_approves -> application
   public function updateEmployer(Request $request) {
+    $rules = [
+      'application_id' => 'required',
+      'employer_approves' => 'required'
+    ];
+
+    $validator = Validator::make(Purifier::clean($request->all()), $rules);
+    if($validator->fails()) {
+      return Response::json(['error' => 'Please fill out all fields.']);
+    }
+
     $user_id = Auth::id();
-    $user = User::find();
+    $user = User::find($user_id);
 
     $app_id = $request->input('application_id');
-    $application = Application::find();
+    $application = Application::find($app_id);
     if(empty($application)) {
       return Response::json([
         'error' => 'No application found with this id',
         'id' => $app_id
       ]);
     }
-    $job = Job::find($applicaion->job_id);
+    $job = Job::find($application->job_id);
     if($user_id != $job->user_id) {
       return Response::json([
         'error' => 'You are not the poster of this job listing.'
@@ -106,11 +120,21 @@ class ApplicationsController extends Controller
 
   # token, application_id -> application
   public function updateEmployee(Request $request) {
+    $rules = [
+      'application_id' => 'required',
+      'employee_accepts' => 'required'
+    ];
+
+    $validator = Validator::make(Purifier::clean($request->all()), $rules);
+    if($validator->fails()) {
+      return Response::json(['error' => 'Please fill out all fields.']);
+    }
+
     $user_id = Auth::id();
-    $user = User::find();
+    $user = User::find($user_id);
 
     $app_id = $request->input('application_id');
-    $application = Application::find();
+    $application = Application::find($app_id);
     if(empty($application)) {
       return Response::json([
         'error' => 'No application found with this id',
@@ -129,24 +153,17 @@ class ApplicationsController extends Controller
     $employer_approves = $application->employer_approves;
 
     if(!($applicant_reviewed && $employer_approves)) {
-      $user_id = Auth::id();
-      $user = User::find();
-
-      $app_id = $request->input('application_id');
-      $application = Application::find();
-      if(empty($application)) {
-        return Response::json([
-          'error' => 'The job poster has not yet reviewed/accepted this application',
-          'application' => $application
-        ]);
-      }
+      return Response::json([
+        'error' => 'The job poster has not yet reviewed/accepted this application',
+        'application' => $application
+      ]);
     }
 
-    $application->employee_accepts = 1;
+    $application->employee_accepts = $request->input('employee_accepts');
     $application->save();
 
     return Response::json([
-      'success' => 'You have accepted this job offer. Congratulations!',
+      'success' => 'You have submitted your response to his job offer.',
       'application' => $application
     ]);
   }

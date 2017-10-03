@@ -6,10 +6,12 @@ class TestUsers(ApiTestCase):
         used_email = ""
         route = "signUp"
 
+        # job seeker and job poster sign up
         for data in [self.get_sign_up_data(n) for n in range(1, 3)]:
             used_email = data[User.EMAIL]
             response = self.post(route, data).json()
 
+            # user data matches submission data
             self.assertTrue(
                 User.SUCCESS in response
             )
@@ -24,6 +26,7 @@ class TestUsers(ApiTestCase):
                 int(test_user[User.ROLE_ID]), data[User.ROLE_ID]
             )
 
+        # ERROR: not all fields provided
         bad_data = self.get_sign_up_data(1)
         bad_data.pop(User.EMAIL)
         bad_response = self.post(route, bad_data).json()
@@ -31,6 +34,7 @@ class TestUsers(ApiTestCase):
             User.ERROR in bad_response
         )
 
+        # ERROR: user signs up with duplicate email
         bad_data[User.EMAIL] = used_email
         response = self.post(route, bad_data).json()
         self.assertTrue(
@@ -38,7 +42,10 @@ class TestUsers(ApiTestCase):
         )
 
     def test_sign_in(self):
+        # new user signs up
         data = self.get_sign_up_data(1)
+
+        # new user signs in
         self.post('signUp', data).json()
         response = self.post("signIn", data).json()
 
@@ -49,11 +56,13 @@ class TestUsers(ApiTestCase):
             "token" in response
         )
 
+        # user data matches sign in data
         user = self.getUser(response["token"])
         self.assertEqual(
             data["name"], user["name"]
         )
 
+        # ERROR: wrong password used for sign in
         data["password"] = "wrong"
         bad_response = self.post("signIn", data).json()
 
@@ -61,19 +70,23 @@ class TestUsers(ApiTestCase):
             "error" in bad_response
         )
 
-    def test_show(self):
+    def test_show_user(self):
+        # new user signs up
         data = self.get_sign_up_data(1)
         new_user = self.make_new_user(data)
 
+        # user views user by id
         user_id = new_user["id"]
         response = self.get("showUser/{}".format(user_id)).json()
         user = response["user"]
 
+        # response data matches user data
         self.assertEqual(
             data["name"], user["name"]
         )
 
-    def test_index(self):
+    def test_get_users(self):
+        # new user signs up
         data = self.get_sign_up_data(1)
         self.make_new_user(data)
 
@@ -85,15 +98,19 @@ class TestUsers(ApiTestCase):
             "data" in response["users"]
         )
 
-    def test_update(self):
-        data = self.get_sign_up_data(1)
-        token = self.sign_in_new_user(data)
+    def test_edit_user(self):
+        # new user signs up
+        token = self.sign_in_new_user(
+            self.get_sign_up_data(1)
+        )
 
+        # user updates bio
         update_data = self.get_bio_data()
         user = self.post(
             "editUser", update_data, token=token
         ).json()[User.USER]
 
+        # user data matches update data
         self.assertEqual(
             user[User.BIO], update_data[User.BIO]
         )
