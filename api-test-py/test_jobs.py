@@ -3,7 +3,7 @@ from api_test import ApiTestCase, Jobs
 
 class TestJobs(ApiTestCase):
     def test_post_job(self):
-        # job poster signs u
+        # job poster signs up
         token = self.sign_in_new_user(
             self.get_sign_up_data(1)
         )
@@ -14,23 +14,8 @@ class TestJobs(ApiTestCase):
         new_job = response["job"]
 
         # job data matches submission data
-        self.assertEqual(
-            new_job[Jobs.NAME], data[Jobs.NAME]
-        )
-        self.assertEqual(
-            new_job[Jobs.DESCRIPTION], data[Jobs.DESCRIPTION]
-        )
-        self.assertEqual(
-            int(new_job[Jobs.WORKERS_NEEDED]), data[Jobs.WORKERS_NEEDED]
-        )
-        self.assertEqual(
-            new_job[Jobs.START_DATE], data[Jobs.START_DATE]
-        )
-        self.assertEqual(
-            int(new_job[Jobs.TIME_FRAME]), data[Jobs.TIME_FRAME]
-        )
-        self.assertEqual(
-            int(new_job[Jobs.BUDGET]), data[Jobs.BUDGET]
+        self.assertTrue(
+            all(self.compare_data_to_response(data, new_job))
         )
 
         # job seeker signs up
@@ -144,23 +129,9 @@ class TestJobs(ApiTestCase):
 
         # edited job data matches submission data
         new_job = response["job"]
-        self.assertEqual(
-            new_job[Jobs.NAME], new_job_data[Jobs.NAME]
-        )
-        self.assertEqual(
-            new_job[Jobs.DESCRIPTION], new_job_data[Jobs.DESCRIPTION]
-        )
-        self.assertEqual(
-            int(new_job[Jobs.WORKERS_NEEDED]), new_job_data[Jobs.WORKERS_NEEDED]
-        )
-        self.assertEqual(
-            new_job[Jobs.START_DATE], new_job_data[Jobs.START_DATE]
-        )
-        self.assertEqual(
-            int(new_job[Jobs.TIME_FRAME]), new_job_data[Jobs.TIME_FRAME]
-        )
-        self.assertEqual(
-            int(new_job[Jobs.BUDGET]), new_job_data[Jobs.BUDGET]
+        new_job_data.pop("job_id")
+        self.assertTrue(
+            all(self.compare_data_to_response(new_job_data, new_job))
         )
 
         # job poster signs up

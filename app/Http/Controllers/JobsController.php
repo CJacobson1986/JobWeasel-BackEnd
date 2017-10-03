@@ -51,6 +51,7 @@ class JobsController extends Controller
 
     $rules = [
       'name' => 'required',
+      'location' => 'required',
       'description' => 'required',
       'workers_needed' => 'required',
       'budget' => 'required',
@@ -65,6 +66,7 @@ class JobsController extends Controller
 
     $job = new Job;
     $job->name = $request->input('name');
+    $job->location = $request->input('location');
     $job->user_id = $user_id;
     $job->description = $request->input('description');
     $job->budget = $request->input('budget');
@@ -89,6 +91,7 @@ class JobsController extends Controller
 
     $rules = [
       'name' => 'required',
+      'location' => 'required',
       'description' => 'required',
       'workers_needed' => 'required',
       'budget' => 'required',
@@ -109,6 +112,7 @@ class JobsController extends Controller
     }
 
     $job->name = $request->input('name');
+    $job->location = $request->input('location');
     $job->description = $request->input('description');
     $job->budget = $request->input('budget');
     $job->workers_needed = $request->input('workers_needed');

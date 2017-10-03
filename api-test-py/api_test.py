@@ -7,6 +7,7 @@ from unittest import TestCase
 
 class Jobs:
     NAME = "name"
+    LOCATION = "location"
     DESCRIPTION = "description"
     WORKERS_NEEDED = "workers_needed"
     BUDGET = "budget"
@@ -97,6 +98,7 @@ class ApiTestCase(TestCase):
     def get_job_data(self):
         data = {
             Jobs.NAME: self.rand_arg(),
+            Jobs.LOCATION: self.rand_arg(),
             Jobs.DESCRIPTION: self.rand_arg(),
             Jobs.WORKERS_NEEDED: randint(1, 10),
             Jobs.BUDGET: randint(100, 1000),
@@ -125,3 +127,30 @@ class ApiTestCase(TestCase):
             file.close()
 
             raise ConnectionError("Internal Server Error: 500")
+
+    @staticmethod
+    def compare_data_to_response(data, response):
+        results = []
+
+        for key in data:
+            value = data[key]
+
+            if key not in response:
+                results.append(False)
+
+            elif type(value) != int:
+                results.append(
+                    value == response[key]
+                )
+
+            else:
+                results.append(
+                    value == int(response[key])
+                )
+
+            if not results[-1]:
+                print("Key {} does not match:\n\t {} != {}".format(
+                    key, value, response.get(key, "NOT FOUND")
+                ))
+
+        return results
