@@ -1,7 +1,17 @@
-import random
+from random import randint
+from random import choice
 import requests
 import string
 from unittest import TestCase
+
+
+class Jobs:
+    NAME = "name"
+    DESCRIPTION = "description"
+    WORKERS_NEEDED = "workers_needed"
+    BUDGET = "budget"
+    START_DATE = "start_date"
+    TIME_FRAME = "time_frame"
 
 
 class User:
@@ -22,7 +32,7 @@ class ApiTestCase(TestCase):
     @classmethod
     def setUpClass(cls):
         cls.USED_ARGS = []
-        cls.api_root = "http://localhost:8000/api/"
+        cls.API_ROOT = "http://localhost:8000/api/"
 
     @staticmethod
     def get_auth_header(token):
@@ -31,7 +41,7 @@ class ApiTestCase(TestCase):
         }
 
     def rand_arg(self):
-        arg = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
+        arg = ''.join(choice(string.ascii_uppercase) for _ in range(10))
         if arg not in self.USED_ARGS:
             self.USED_ARGS.append(arg)
             return arg
@@ -43,7 +53,9 @@ class ApiTestCase(TestCase):
             headers = {}
         else:
             headers = self.get_auth_header(token)
-        response = requests.post(self.api_root + route, data=data, headers=headers)
+
+        response = requests.post(self.API_ROOT + route, data=data, headers=headers)
+        self.render_error(response)
 
         return response
 
@@ -53,7 +65,8 @@ class ApiTestCase(TestCase):
         else:
             headers = self.get_auth_header(token)
 
-        response = requests.get(self.api_root + route, params=params, headers=headers)
+        response = requests.get(self.API_ROOT + route, params=params, headers=headers)
+        self.render_error(response)
 
         return response
 
@@ -76,7 +89,21 @@ class ApiTestCase(TestCase):
         data = {
             User.BIO: self.rand_arg(),
             User.LOCATION: self.rand_arg(),
-            User.PHONE: random.randint(0, 9)
+            User.PHONE: randint(0, 9)
+        }
+
+        return data
+
+    def get_job_data(self):
+        data = {
+            Jobs.NAME: self.rand_arg(),
+            Jobs.DESCRIPTION: self.rand_arg(),
+            Jobs.WORKERS_NEEDED: randint(1, 10),
+            Jobs.BUDGET: randint(100, 1000),
+            Jobs.START_DATE: "2017-{:0>2}-{:0>2}".format(
+                randint(1, 12), randint(1, 30)
+            ),
+            Jobs.TIME_FRAME: randint(1, 10)
         }
 
         return data
@@ -89,3 +116,12 @@ class ApiTestCase(TestCase):
         response = self.post("signIn", data).json()
 
         return response["token"]
+
+    @staticmethod
+    def render_error(response):
+        if response.status_code == 500:
+            file = open("error_message.html", "w")
+            file.write(response.text)
+            file.close()
+
+            raise ConnectionError("Internal Server Error: 500")
