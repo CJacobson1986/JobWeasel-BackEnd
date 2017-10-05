@@ -2,6 +2,30 @@ from api_test import ApiTestCase, Jobs
 
 
 class TestJobs(ApiTestCase):
+    def test_search_jobs(self):
+        # job poster signs up
+        token = self.sign_in_new_user(
+            self.get_sign_up_data(1)
+        )
+
+        # job poster submits job
+        data = self.get_job_data()
+        data[Jobs.LOCATION] = "fake location"
+        data[Jobs.NAME] = "fake name"
+        data[Jobs.DESCRIPTION] = "fake description"
+        response = self.post("postJob", data, token=token).json()
+        job_id = response["job"]["id"]
+
+        for arg in ("location", "name", "description"):
+            response = self.get("searchJobs/{}".format(arg)).json()
+
+            job_ids = [
+                j["id"] for j in response["jobs"]
+            ]
+            self.assertTrue(
+                job_id in job_ids
+            )
+
     def test_post_job(self):
         # job poster signs up
         token = self.sign_in_new_user(

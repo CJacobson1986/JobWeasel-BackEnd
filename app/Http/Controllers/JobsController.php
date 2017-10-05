@@ -25,6 +25,15 @@ class JobsController extends Controller
     return Response::json(['jobs' => $jobs]);
   }
 
+  # search_term -> jobs
+  public function search($search_term) {
+    $jobs = Job::where('name', 'LIKE', "%$search_term%")->
+      orWhere('description', 'LIKE', "%$search_term%")->
+      orWhere('location', 'LIKE', "%$search_term%")->get();
+
+    return Response::json(['jobs' => $jobs]);
+  }
+
   # id -> job
   public function show($id) {
     $job = Job::find($id);
