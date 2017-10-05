@@ -18,6 +18,7 @@ class CreateJobsTable extends Migration
 
           # post job listing form data
           $table->string('name');
+          $table->string('location');
           $table->integer('user_id');
           $table->longText('description');
           $table->integer('workers_needed');

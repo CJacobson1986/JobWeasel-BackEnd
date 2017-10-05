@@ -16,14 +16,9 @@ class TestUsers(ApiTestCase):
                 User.SUCCESS in response
             )
             test_user = response[User.USER]
-            self.assertEqual(
-                test_user[User.NAME], data[User.NAME]
-            )
-            self.assertEqual(
-                test_user[User.EMAIL], data[User.EMAIL]
-            )
-            self.assertEqual(
-                int(test_user[User.ROLE_ID]), data[User.ROLE_ID]
+            data.pop(User.PASSWORD)
+            self.assertTrue(
+                all(self.compare_data_to_response(data, test_user))
             )
 
         # ERROR: not all fields provided
@@ -111,12 +106,6 @@ class TestUsers(ApiTestCase):
         ).json()[User.USER]
 
         # user data matches update data
-        self.assertEqual(
-            user[User.BIO], update_data[User.BIO]
-        )
-        self.assertEqual(
-            user[User.LOCATION], update_data[User.LOCATION]
-        )
-        self.assertEqual(
-            int(user[User.PHONE]), update_data[User.PHONE]
+        self.assertTrue(
+            all(self.compare_data_to_response(update_data, user))
         )
