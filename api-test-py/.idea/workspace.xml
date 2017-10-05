@@ -20,8 +20,9 @@
     <SUITE FILE_PATH="coverage/api-test-py$Unittest_TestApplications_test_get_applications.coverage" NAME="Unittest TestApplications.test_get_applications Coverage Results" MODIFIED="1507046317488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/api-test-py$Unittests_in_TestSkills.coverage" NAME="Unittests in TestSkills Coverage Results" MODIFIED="1506971915741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/api-test-py$Unittest_TestApplications_test_accept_offer.coverage" NAME="Unittest TestApplications.test_accept_offer Coverage Results" MODIFIED="1507053593843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/api-test-py$do_tests.coverage" NAME="do_tests Coverage Results" MODIFIED="1507232486727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/api-test-py$Unittests_in_TestJobs.coverage" NAME="Unittests in TestJobs Coverage Results" MODIFIED="1507059396620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/api-test-py$Unittest_TestUsers_test_edit_user.coverage" NAME="Unittest TestUsers.test_edit_user Coverage Results" MODIFIED="1507060032751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/api-test-py$Unittest_TestUsers_test_edit_user.coverage" NAME="Unittest TestUsers.test_edit_user Coverage Results" MODIFIED="1507231713251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/api-test-py$Unittest_TestSkills_test_index_user_skills.coverage" NAME="Unittest TestSkills.test_index_user_skills Coverage Results" MODIFIED="1506972268968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/api-test-py$Unittest_TestUsers_test_sign_up.coverage" NAME="Unittest TestUsers.test_sign_up Coverage Results" MODIFIED="1507059968470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -34,8 +35,8 @@
       <file leaf-file-name="api_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2875">
-              <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+            <state relative-caret-position="625">
+              <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
               <folding>
                 <element signature="e#341#562#0" expanded="false" />
                 <element signature="e#644#714#0" expanded="false" />
@@ -43,11 +44,11 @@
                 <element signature="e#781#847#0" expanded="false" />
                 <element signature="e#881#1094#0" expanded="false" />
                 <element signature="e#996#1045#0" expanded="false" />
-                <element signature="e#1749#1824#0" expanded="false" />
-                <element signature="e#2111#2271#0" expanded="false" />
-                <element signature="e#2118#2250#0" expanded="false" />
-                <element signature="e#2782#2829#0" expanded="false" />
-                <element signature="e#2877#2988#0" expanded="false" />
+                <element signature="e#1878#1953#0" expanded="false" />
+                <element signature="e#2240#2400#0" expanded="false" />
+                <element signature="e#2247#2379#0" expanded="false" />
+                <element signature="e#2911#2958#0" expanded="false" />
+                <element signature="e#3006#3117#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -56,16 +57,27 @@
       <file leaf-file-name="test_users.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_users.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state relative-caret-position="875">
+              <caret line="118" column="52" lean-forward="true" selection-start-line="118" selection-start-column="52" selection-end-line="118" selection-end-column="52" />
               <folding>
-                <element signature="e#75#3088#0" expanded="false" />
-                <element signature="e#107#1148#0" expanded="false" />
-                <element signature="e#274#680#0" expanded="false" />
-                <element signature="e#1186#1881#0" expanded="false" />
-                <element signature="e#1921#2306#0" expanded="false" />
-                <element signature="e#2346#2628#0" expanded="false" />
-                <element signature="e#2668#3088#0" expanded="false" />
+                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#123#1164#0" expanded="false" />
+                <element signature="e#290#696#0" expanded="false" />
+                <element signature="e#1202#1897#0" expanded="false" />
+                <element signature="e#1937#2322#0" expanded="false" />
+                <element signature="e#2362#2644#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="do_tests.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/do_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="14" column="63" lean-forward="false" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,7 +106,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_jobs.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_jobs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_jobs.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="625">
@@ -155,9 +167,10 @@
       <list>
         <option value="$PROJECT_DIR$/test_applications.py" />
         <option value="$PROJECT_DIR$/test_skills.py" />
+        <option value="$PROJECT_DIR$/test_jobs.py" />
         <option value="$PROJECT_DIR$/api_test.py" />
         <option value="$PROJECT_DIR$/test_users.py" />
-        <option value="$PROJECT_DIR$/test_jobs.py" />
+        <option value="$PROJECT_DIR$/do_tests.py" />
       </list>
     </option>
   </component>
@@ -197,30 +210,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestJobs.test_search_jobs">
-    <configuration default="false" name="Unittests in TestJobs" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="api-test-py" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_jobs.py" />
-      <option name="CLASS_NAME" value="TestJobs" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.do_tests">
     <configuration default="false" name="Unittest TestJobs.test_edit_job" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -311,6 +301,24 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="do_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="api-test-py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/do_tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -528,19 +536,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestJobs" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_edit_job" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_sign_up" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_edit_user" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_search_jobs" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_edit_job" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_sign_up" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_edit_user" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_search_jobs" />
+      <item index="4" class="java.lang.String" itemvalue="Python.do_tests" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_search_jobs" />
+        <item index="0" class="java.lang.String" itemvalue="Python.do_tests" />
         <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_edit_user" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_sign_up" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_edit_job" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestJobs" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_search_jobs" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestUsers.test_sign_up" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestJobs.test_edit_job" />
       </list>
     </recent_temporary>
   </component>
@@ -561,35 +569,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TestJobs_test_edit_job - 2017.10.03 at 15h 40m 56s.xml">
-      <configuration name="Unittest TestJobs.test_edit_job" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_TestJobs_test_edit_job - 2017.10.03 at 15h 42m 48s.xml">
-      <configuration name="Unittest TestJobs.test_edit_job" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_TestJobs_test_search_jobs - 2017.10.05 at 09h 42m 34s.xml">
-      <configuration name="Unittest TestJobs.test_search_jobs" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.03 at 15h 47m 18s.xml">
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 17m 29s.xml">
       <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestUsers_test_sign_up - 2017.10.03 at 15h 45m 35s.xml">
-      <configuration name="Unittest TestUsers.test_sign_up" configurationId="tests" />
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 18m 52s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_TestUsers_test_sign_up - 2017.10.03 at 15h 46m 14s.xml">
-      <configuration name="Unittest TestUsers.test_sign_up" configurationId="tests" />
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 20m 45s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestJobs - 2017.10.03 at 15h 33m 07s.xml">
-      <configuration name="Unittests in TestJobs" configurationId="tests" />
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 22m 45s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestJobs - 2017.10.03 at 15h 34m 35s.xml">
-      <configuration name="Unittests in TestJobs" configurationId="tests" />
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 23m 30s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestJobs - 2017.10.03 at 15h 36m 10s.xml">
-      <configuration name="Unittests in TestJobs" configurationId="tests" />
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 23m 55s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_TestJobs - 2017.10.03 at 15h 37m 34s.xml">
-      <configuration name="Unittests in TestJobs" configurationId="tests" />
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 26m 23s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 27m 18s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 27m 53s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestUsers_test_edit_user - 2017.10.05 at 15h 28m 39s.xml">
+      <configuration name="Unittest TestUsers.test_edit_user" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -602,11 +610,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="18" y="395" width="1884" height="289" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="34" y="227" width="1878" height="283" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.39918947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="217" y="431" width="1425" height="501" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="FLOATING" visible="false" show_stripe_button="true" weight="0.39918947" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="309" y="265" width="1425" height="501" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -644,7 +652,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="33" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/api_test.py</url>
+          <line>132</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="36" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -660,11 +675,11 @@
             <element signature="e#781#847#0" expanded="false" />
             <element signature="e#881#1094#0" expanded="false" />
             <element signature="e#996#1045#0" expanded="false" />
-            <element signature="e#1749#1824#0" expanded="false" />
-            <element signature="e#2111#2271#0" expanded="false" />
-            <element signature="e#2118#2250#0" expanded="false" />
-            <element signature="e#2782#2829#0" expanded="false" />
-            <element signature="e#2877#2988#0" expanded="false" />
+            <element signature="e#1878#1953#0" expanded="false" />
+            <element signature="e#2240#2400#0" expanded="false" />
+            <element signature="e#2247#2379#0" expanded="false" />
+            <element signature="e#2911#2958#0" expanded="false" />
+            <element signature="e#3006#3117#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -674,13 +689,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#75#3088#0" expanded="false" />
-            <element signature="e#107#1148#0" expanded="false" />
-            <element signature="e#274#680#0" expanded="false" />
-            <element signature="e#1186#1881#0" expanded="false" />
-            <element signature="e#1921#2306#0" expanded="false" />
-            <element signature="e#2346#2628#0" expanded="false" />
-            <element signature="e#2668#3088#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#123#1164#0" expanded="false" />
+            <element signature="e#290#696#0" expanded="false" />
+            <element signature="e#1202#1897#0" expanded="false" />
+            <element signature="e#1937#2322#0" expanded="false" />
+            <element signature="e#2362#2644#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -760,11 +774,11 @@
             <element signature="e#781#847#0" expanded="false" />
             <element signature="e#881#1094#0" expanded="false" />
             <element signature="e#996#1045#0" expanded="false" />
-            <element signature="e#1749#1824#0" expanded="false" />
-            <element signature="e#2111#2271#0" expanded="false" />
-            <element signature="e#2118#2250#0" expanded="false" />
-            <element signature="e#2782#2829#0" expanded="false" />
-            <element signature="e#2877#2988#0" expanded="false" />
+            <element signature="e#1878#1953#0" expanded="false" />
+            <element signature="e#2240#2400#0" expanded="false" />
+            <element signature="e#2247#2379#0" expanded="false" />
+            <element signature="e#2911#2958#0" expanded="false" />
+            <element signature="e#3006#3117#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -774,13 +788,12 @@
         <state relative-caret-position="2625">
           <caret line="105" column="9" lean-forward="false" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
           <folding>
-            <element signature="e#75#3088#0" expanded="false" />
-            <element signature="e#107#1148#0" expanded="false" />
-            <element signature="e#274#680#0" expanded="false" />
-            <element signature="e#1186#1881#0" expanded="false" />
-            <element signature="e#1921#2306#0" expanded="false" />
-            <element signature="e#2346#2628#0" expanded="false" />
-            <element signature="e#2668#3088#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#123#1164#0" expanded="false" />
+            <element signature="e#290#696#0" expanded="false" />
+            <element signature="e#1202#1897#0" expanded="false" />
+            <element signature="e#1937#2322#0" expanded="false" />
+            <element signature="e#2362#2644#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -860,11 +873,11 @@
             <element signature="e#781#847#0" expanded="false" />
             <element signature="e#881#1094#0" expanded="false" />
             <element signature="e#996#1045#0" expanded="false" />
-            <element signature="e#1749#1824#0" expanded="false" />
-            <element signature="e#2111#2271#0" expanded="false" />
-            <element signature="e#2118#2250#0" expanded="false" />
-            <element signature="e#2782#2829#0" expanded="false" />
-            <element signature="e#2877#2988#0" expanded="false" />
+            <element signature="e#1878#1953#0" expanded="false" />
+            <element signature="e#2240#2400#0" expanded="false" />
+            <element signature="e#2247#2379#0" expanded="false" />
+            <element signature="e#2911#2958#0" expanded="false" />
+            <element signature="e#3006#3117#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -874,13 +887,12 @@
         <state relative-caret-position="300">
           <caret line="87" column="15" lean-forward="false" selection-start-line="87" selection-start-column="15" selection-end-line="87" selection-end-column="15" />
           <folding>
-            <element signature="e#75#3088#0" expanded="false" />
-            <element signature="e#107#1148#0" expanded="false" />
-            <element signature="e#274#680#0" expanded="false" />
-            <element signature="e#1186#1881#0" expanded="false" />
-            <element signature="e#1921#2306#0" expanded="false" />
-            <element signature="e#2346#2628#0" expanded="false" />
-            <element signature="e#2668#3088#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#123#1164#0" expanded="false" />
+            <element signature="e#290#696#0" expanded="false" />
+            <element signature="e#1202#1897#0" expanded="false" />
+            <element signature="e#1937#2322#0" expanded="false" />
+            <element signature="e#2362#2644#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -911,13 +923,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#75#3088#0" expanded="false" />
-            <element signature="e#107#1148#0" expanded="false" />
-            <element signature="e#274#680#0" expanded="false" />
-            <element signature="e#1186#1881#0" expanded="false" />
-            <element signature="e#1921#2306#0" expanded="false" />
-            <element signature="e#2346#2628#0" expanded="false" />
-            <element signature="e#2668#3088#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#123#1164#0" expanded="false" />
+            <element signature="e#290#696#0" expanded="false" />
+            <element signature="e#1202#1897#0" expanded="false" />
+            <element signature="e#1937#2322#0" expanded="false" />
+            <element signature="e#2362#2644#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -927,13 +938,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#75#3088#0" expanded="false" />
-            <element signature="e#107#1148#0" expanded="false" />
-            <element signature="e#274#680#0" expanded="false" />
-            <element signature="e#1186#1881#0" expanded="false" />
-            <element signature="e#1921#2306#0" expanded="false" />
-            <element signature="e#2346#2628#0" expanded="false" />
-            <element signature="e#2668#3088#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#123#1164#0" expanded="false" />
+            <element signature="e#290#696#0" expanded="false" />
+            <element signature="e#1202#1897#0" expanded="false" />
+            <element signature="e#1937#2322#0" expanded="false" />
+            <element signature="e#2362#2644#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -943,26 +953,6 @@
         <state relative-caret-position="188">
           <caret line="579" column="0" lean-forward="false" selection-start-line="579" selection-start-column="0" selection-end-line="579" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2875">
-          <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-          <folding>
-            <element signature="e#341#562#0" expanded="false" />
-            <element signature="e#644#714#0" expanded="false" />
-            <element signature="e#774#847#0" expanded="false" />
-            <element signature="e#781#847#0" expanded="false" />
-            <element signature="e#881#1094#0" expanded="false" />
-            <element signature="e#996#1045#0" expanded="false" />
-            <element signature="e#1749#1824#0" expanded="false" />
-            <element signature="e#2111#2271#0" expanded="false" />
-            <element signature="e#2118#2250#0" expanded="false" />
-            <element signature="e#2782#2829#0" expanded="false" />
-            <element signature="e#2877#2988#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,22 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_users.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="e#75#3088#0" expanded="false" />
-            <element signature="e#107#1148#0" expanded="false" />
-            <element signature="e#274#680#0" expanded="false" />
-            <element signature="e#1186#1881#0" expanded="false" />
-            <element signature="e#1921#2306#0" expanded="false" />
-            <element signature="e#2346#2628#0" expanded="false" />
-            <element signature="e#2668#3088#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_jobs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="625">
@@ -1042,6 +1016,59 @@
             <element signature="e#1654#2742#0" expanded="false" />
             <element signature="e#2781#3835#0" expanded="false" />
             <element signature="e#3874#4968#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/site-packages/requests/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <element signature="e#341#562#0" expanded="false" />
+            <element signature="e#644#714#0" expanded="false" />
+            <element signature="e#774#847#0" expanded="false" />
+            <element signature="e#781#847#0" expanded="false" />
+            <element signature="e#881#1094#0" expanded="false" />
+            <element signature="e#996#1045#0" expanded="false" />
+            <element signature="e#1878#1953#0" expanded="false" />
+            <element signature="e#2240#2400#0" expanded="false" />
+            <element signature="e#2247#2379#0" expanded="false" />
+            <element signature="e#2911#2958#0" expanded="false" />
+            <element signature="e#3006#3117#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="118" column="52" lean-forward="true" selection-start-line="118" selection-start-column="52" selection-end-line="118" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#123#1164#0" expanded="false" />
+            <element signature="e#290#696#0" expanded="false" />
+            <element signature="e#1202#1897#0" expanded="false" />
+            <element signature="e#1937#2322#0" expanded="false" />
+            <element signature="e#2362#2644#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/do_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="63" lean-forward="false" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
           </folding>
         </state>
       </provider>

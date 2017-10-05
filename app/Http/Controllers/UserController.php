@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Image;
 use Response;
 use Purifier;
 use Hash;
@@ -79,6 +80,7 @@ class UserController extends Controller
     $user->password = $password;
     $user->role_id = $role;
     $user->bio = "";
+    $user->photo = "";
     $user->save();
 
     return Response::json([
@@ -92,7 +94,7 @@ class UserController extends Controller
     $rules = [
       'bio' => 'required',
       'phone' => 'required',
-      'location' => 'required'
+      'location' => 'required',
     ];
 
     $validator = Validator::make(Purifier::clean($request->all()), $rules);
@@ -113,6 +115,20 @@ class UserController extends Controller
     $user->bio = $bio;
     $user->location = $location;
     $user->phone = $phone;
+
+    $photoInput = $request->file('photo');
+    if(!empty($photoInput)) {
+      $img = Image::make($photoInput);
+      $img->resize(400, 400, function ($constraint) {
+        $constraint->upsize();
+        $constraint->aspectRatio();
+      });
+
+      $photoName = $id . ".profile_photo.png" ;
+      $img->save('storage/'. $photoName);
+      $user->photo = $request->root() . "/storage/" . $photoName;
+    }
+
     $user->save();
 
     return Response::json([
