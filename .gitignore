@@ -9,3 +9,6 @@ Homestead.yaml
 .env
 .env.production
 .reset_db.py
+/api-test-py/error_message.html
+/api-test/.idea
+/api-test/.idea/*

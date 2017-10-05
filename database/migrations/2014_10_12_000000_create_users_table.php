@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('location')->default('');
             $table->integer('phone')->default(0);
             $table->longText('bio'); // default: ""
+            $table->longText('photo'); // default: ""
 
             # backend
             $table->integer('role_id'); // 1: job_poster, 2: job_seeker
