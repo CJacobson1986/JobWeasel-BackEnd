@@ -1,4 +1,5 @@
 from api_test import ApiTestCase, User
+import requests
 
 
 class TestUsers(ApiTestCase):
@@ -101,11 +102,29 @@ class TestUsers(ApiTestCase):
 
         # user updates bio
         update_data = self.get_bio_data()
+        photo = open("photo_test.png", "rb")
         user = self.post(
-            "editUser", update_data, token=token
+            "editUser", update_data, token=token,
+            files={"photo": photo}
         ).json()[User.USER]
+        photo.close()
 
         # user data matches update data
         self.assertTrue(
             all(self.compare_data_to_response(update_data, user))
         )
+
+        # user 'photo' data matches upload url
+        storage = self.API_ROOT.replace("/api/", "/storage/")
+        photo_url = "{}{}.profile_photo.png".format(
+            storage, user["id"]
+        )
+        self.assertEqual(
+            user["photo"], photo_url
+        )
+
+        # photo uploaded successfully
+        self.assertEqual(
+            requests.get(photo_url).status_code, 200
+        )
+

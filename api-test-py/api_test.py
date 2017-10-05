@@ -49,13 +49,21 @@ class ApiTestCase(TestCase):
         else:
             return self.rand_arg()
 
-    def post(self, route, data, token=None):
+    def post(self, route, data, token=None, files=None):
         if not token:
             headers = {}
         else:
             headers = self.get_auth_header(token)
 
-        response = requests.post(self.API_ROOT + route, data=data, headers=headers)
+        if not files:
+            files = {}
+
+        response = requests.post(
+            self.API_ROOT + route,
+            data=data,
+            headers=headers,
+            files=files
+        )
         self.render_error(response)
 
         return response
