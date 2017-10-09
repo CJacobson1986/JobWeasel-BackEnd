@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Response;
 use Purifier;
-use Hash;
 use Auth;
 use JWTAuth;
 use App\User;

@@ -30,10 +30,12 @@ class User:
 
 
 class ApiTestCase(TestCase):
+    API_ROOT = "http://localhost:8000/api/"
+
     @classmethod
     def setUpClass(cls):
         cls.USED_ARGS = []
-        cls.API_ROOT = "http://localhost:8000/api/"
+        # cls.API_ROOT = "http://localhost:8000/api/"
 
     @staticmethod
     def get_auth_header(token):
@@ -119,7 +121,9 @@ class ApiTestCase(TestCase):
         return data
 
     def make_new_user(self, data):
-        return self.post("signUp", data).json()["user"]
+        response = self.post("signUp", data).json()
+
+        return response["user"]
 
     def sign_in_new_user(self, data):
         self.post("signUp", data)

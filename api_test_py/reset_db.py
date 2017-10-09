@@ -1,5 +1,5 @@
 from os import system
-from unittest import main
+
 
 def reset_db():
     system("php artisan migrate:reset")

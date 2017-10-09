@@ -43,4 +43,8 @@ Route::get('getUserLinks/{id}', 'LinksController@showUser');
 Route::get('getJobLinks/{id}', 'LinksController@showJob');
 Route::post('editLink', 'LinksController@update');
 
+Route::post('makeAdmin', 'AdminController@store');
+Route::post('removeAdmin', 'AdminController@delete');
+Route::get('getAdmins', 'AdminController@get');
+
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
