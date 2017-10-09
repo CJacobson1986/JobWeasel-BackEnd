@@ -38,4 +38,9 @@ Route::post('submitApplication', 'ApplicationsController@store');
 Route::post('reviewApplication', 'ApplicationsController@updateEmployer');
 Route::post('acceptOffer', 'ApplicationsController@updateEmployee');
 
+Route::post('addLinkTo{target}', 'LinksController@store');
+Route::get('getUserLinks/{id}', 'LinksController@showUser');
+Route::get('getJobLinks/{id}', 'LinksController@showJob');
+Route::post('editLink', 'LinksController@update');
+
 Route::any('{path?}', 'MainController@index')->where("path", ".+");
