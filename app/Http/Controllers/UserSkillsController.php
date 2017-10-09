@@ -24,6 +24,7 @@ class UserSkillsController extends Controller
     return Response::json(['user_skills' => $userSkills]);
   }
 
+  # user_id -> skills
   public function show($id) {
     $id = (int) $id;
     $matches = UserSkill::where('user_id', $id)->get();
