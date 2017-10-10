@@ -11,11 +11,12 @@ use JWTAuth;
 use App\Skill;
 use App\UserSkill;
 use App\User;
+use App\Admin;
 
 class UserSkillsController extends Controller
 {
   public function __construct() {
-    $this->middleware('jwt.auth', ['only' => ['store']]);
+    $this->middleware('jwt.auth', ['only' => ['store', 'delete']]);
   }
 
   public function index() {
@@ -29,24 +30,20 @@ class UserSkillsController extends Controller
     $id = (int) $id;
     $matches = UserSkill::where('user_id', $id)->get();
     $skills = [];
+
     foreach ($matches as $match) {
       $skill = Skill::find($match->skill_id);
+      $skill->userSkill_id = $match->id;
       array_push($skills, $skill);
     }
 
-    return Response::json([
-      'skills' => $skills,
-      'id' => $id
-    ]);
+    return Response::json(['skills' => $skills]);
   }
 
   # token, skill_id -> user_skill
   public function store(Request $request) {
     $id = Auth::id();
     $user = User::find($id);
-    if(empty($user)) {
-      return Response::json(['error' => 'User does not exist', 'id' => $id]);
-    }
 
     $rules = [
       'skill_id' => 'required',
@@ -66,5 +63,37 @@ class UserSkillsController extends Controller
       'success' => 'UserSkill added',
       'user_skill' => $userSkill
     ]);
+  }
+
+  # token, userSkill_id -> null
+  public function delete(Request $request) {
+    $user_id = Auth::id();
+
+    $rules = ['userSkill_id' => 'required'];
+
+    $validator = Validator::make(Purifier::clean($request->all()), $rules);
+    if($validator->fails()) {
+      return Response::json(['error' => 'Please fill out all fields']);
+    }
+
+    $id = $request->input('userSkill_id');
+    $userSkill = UserSkill::find($id);
+
+    if(empty($userSkill)) {
+      return Response::json(['error' => 'No UserSkill exists with that id', 'id' => $id]);
+    }
+
+    $admin = !empty(Admin::where('user_id', '=', $user_id)->first());
+    $authorized = ($user_id == $userSkill->user_id) || $admin;
+
+    if(!$authorized) {
+      return Response::json([
+        'error' => 'You are not the user of this skill',
+      ]);
+    }
+
+    $userSkill->delete();
+
+    return Response::json(['success' => 'UserSkill deleted successfully']);
   }
 }

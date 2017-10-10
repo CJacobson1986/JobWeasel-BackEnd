@@ -122,4 +122,36 @@ class LinksController extends Controller
       'link' => $link
     ]);
   }
+
+  # token, link_id -> null
+  public function delete(Request $request) {
+    $user_id = Auth::id();
+
+    $rules = ['link_id' => 'required'];
+
+    $validator = Validator::make(Purifier::clean($request->all()), $rules);
+    if($validator->fails()) {
+      return Response::json(['error' => 'Please fill out all fields']);
+    }
+
+    $id = $request->input('userSkill_id');
+    $link = Link::find($id);
+
+    if(empty($link)) {
+      return Response::json(['error' => 'No link exists with that id', 'id' => $id]);
+    }
+
+    $admin = !empty(Admin::where('user_id', '=', $user_id)->first());
+    $authorized = ($user_id == $link->user_id) || $admin;
+
+    if(!$authorized) {
+      return Response::json([
+        'error' => 'You are not the poster of this link',
+      ]);
+    }
+
+    $link->delete();
+
+    return Response::json(['success' => 'Link deleted successfully']);
+  }
 }
