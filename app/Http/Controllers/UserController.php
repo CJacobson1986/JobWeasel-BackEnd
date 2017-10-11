@@ -11,11 +11,12 @@ use Hash;
 use Auth;
 use JWTAuth;
 use App\User;
+use App\Admin;
 
 class UserController extends Controller
 {
   public function __construct() {
-    $this->middleware('jwt.auth', ['only' => ['get', 'update']]);
+    $this->middleware('jwt.auth', ['only' => ['get', 'update', 'review']]);
   }
 
   # token -> user
@@ -166,5 +167,39 @@ class UserController extends Controller
         'user' => $user
       ]);
     }
+  }
+
+  public function review(Request $request) {
+    $rules = [
+      'user_id' => 'required',
+      'approved' => 'required'
+    ];
+
+    $validator = Validator::make(Purifier::clean($request->all()), $rules);
+    if($validator->fails()) {
+      return Response::json(['error' => 'Please fill out all fields.']);
+    }
+
+    $admin_id = Auth::id();
+    $admin = !empty(Admin::where('user_id', '=', $admin_id)->first());
+
+    if(!$admin) {
+      return Response::json(['error' => 'You are not an admin']);
+    }
+
+    $user = User::find($request->input('user_id'));
+
+    if(empty($user)) {
+      return Response::json(['error' => 'User does not exist']);
+    }
+
+    $user->approved = $request->input('approved');
+    $user->reviewed = 1;
+    $user->save();
+
+    return Response::json([
+      'success' => 'User approval status changed',
+      'user' => $user
+    ]);
   }
 }

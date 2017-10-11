@@ -19,6 +19,7 @@ Route::get('getUser', 'UserController@get');
 Route::get('showUser/{id}', 'UserController@show');
 Route::get('getUsers', 'UserController@index');
 Route::post('editUser', 'UserController@update');
+Route::post('reviewUser', 'UserController@review');
 
 Route::get('getSkills', 'SkillsController@index');
 Route::post('addSkill', 'SkillsController@store');
