@@ -40,6 +40,14 @@ class UserController extends Controller
     return Response::json(['users' => $users]);
   }
 
+  # search_term -> users
+  public function search($search_term) {
+    $jobs = User::where('name', 'LIKE', "%$search_term%")->
+      orWhere('location', 'LIKE', "%$search_term%")->get();
+
+    return Response::json(['jobs' => $jobs]);
+  }
+
   # id -> user
   public function show($id) {
     $user = User::find($id);
