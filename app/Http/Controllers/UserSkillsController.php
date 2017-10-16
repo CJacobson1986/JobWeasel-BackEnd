@@ -40,13 +40,13 @@ class UserSkillsController extends Controller
     return Response::json(['skills' => $skills]);
   }
 
-  # token, skill_id -> user_skill
+  # token, skill_name -> user_skill
   public function store(Request $request) {
     $id = Auth::id();
     $user = User::find($id);
 
     $rules = [
-      'skill_id' => 'required',
+      'skill_name' => 'required',
     ];
 
     $validator = Validator::make(Purifier::clean($request->all()), $rules);
@@ -54,8 +54,27 @@ class UserSkillsController extends Controller
       return Response::json(['error' => 'Please fill out all fields.']);
     }
 
+    $skill_name = $request->input('skill_name');
+    $skill = Skill::where('name', '=', $skill_name)->first();
+
+    if(empty($skill)) {
+      $skill = new Skill;
+      $skill->name = $skill_name;
+      $skill->save();
+    }
+
+    if(!empty(
+      UserSkill::where('user_id', '=', $id)->where('skill_id', '=', $skill->id)->first()
+      )) {
+        return Response::json([
+          'error' => 'User has already added skill',
+          'user' => $user,
+          'skill' => $skill
+        ]);
+    }
+
     $userSkill = new UserSkill;
-    $userSkill->skill_id = $request->input('skill_id');
+    $userSkill->skill_id = $skill->id;
     $userSkill->user_id = $id;
     $userSkill->save();
 
@@ -65,22 +84,32 @@ class UserSkillsController extends Controller
     ]);
   }
 
-  # token, userSkill_id -> null
+  # token, skill_name -> null
   public function delete(Request $request) {
     $user_id = Auth::id();
 
-    $rules = ['userSkill_id' => 'required'];
+    $rules = ['skill_name' => 'required'];
 
     $validator = Validator::make(Purifier::clean($request->all()), $rules);
     if($validator->fails()) {
       return Response::json(['error' => 'Please fill out all fields']);
     }
 
-    $id = $request->input('userSkill_id');
-    $userSkill = UserSkill::find($id);
+    $skill_name = $request->input('skill_name');
+    $skill = Skill::where('name', '=', $skill_name)->first();
+
+    if(empty($skill)) {
+      return Response::json(['error' => 'No skill exists with name :' + $skill_name]);
+    }
+
+    $userSkill = UserSkill::where('user_id', '=', $user_id)->where('skill_id', '=', $skill->id)->first();
 
     if(empty($userSkill)) {
-      return Response::json(['error' => 'No UserSkill exists with that id', 'id' => $id]);
+      return Response::json([
+        'error' => 'No UserSkill exists for that skill/user_id',
+        'skill' => $skill,
+        'user_id' => $user_id
+      ]);
     }
 
     $admin = !empty(Admin::where('user_id', '=', $user_id)->first());
@@ -94,6 +123,6 @@ class UserSkillsController extends Controller
 
     $userSkill->delete();
 
-    return Response::json(['success' => 'UserSkill deleted successfully']);
+    return Response::json(['success' => 'UserSkill removed successfully']);
   }
 }

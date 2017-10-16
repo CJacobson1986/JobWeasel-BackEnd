@@ -8,6 +8,7 @@ use Response;
 use Purifier;
 use Auth;
 use JWTAuth;
+use App\Admin;
 use App\Link;
 use App\User;
 use App\Job;
@@ -15,7 +16,7 @@ use App\Job;
 class LinksController extends Controller
 {
   public function __construct() {
-    $this->middleware('jwt.auth', ['only' => ['store', 'update']]);
+    $this->middleware('jwt.auth', ['only' => ['store', 'update', 'delete']]);
   }
 
   public function index() {
@@ -134,7 +135,7 @@ class LinksController extends Controller
       return Response::json(['error' => 'Please fill out all fields']);
     }
 
-    $id = $request->input('userSkill_id');
+    $id = $request->input('link_id');
     $link = Link::find($id);
 
     if(empty($link)) {
@@ -147,6 +148,8 @@ class LinksController extends Controller
     if(!$authorized) {
       return Response::json([
         'error' => 'You are not the poster of this link',
+        'user_id' => $user_id,
+        'link.user_id' => $link->user_id
       ]);
     }
 
