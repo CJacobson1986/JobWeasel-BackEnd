@@ -141,7 +141,7 @@ class UserController extends Controller
     $user->save();
 
     return Response::json([
-      'success' => 'Profile udated successfully!',
+      'success' => 'Profile updated successfully!',
       'user' => $user
     ]);
   }
