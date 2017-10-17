@@ -16,17 +16,25 @@ class ApplicationsController extends Controller
 {
   public function __construct() {
     $this->middleware('jwt.auth', ['only' => [
-      'get',
       'store',
       'updateEmployer',
       'updateEmployee'
       ]]);
   }
 
-  # id -> applications
+  # job_id -> applications
   public function index($id) {
     $applications = Application::where('job_id', '=', $id)->
-      where('applicant_reviewed', '=', 0)->
+      orderBy('id', 'desc')->get();
+
+    return Response::json([
+      'applications' => $applications->toArray()
+    ]);
+  }
+
+  # user_id -> applications
+  public function getUserApps($id) {
+    $applications = Application::where('user_id', '=')->
       orderBy('id', 'desc')->get();
 
     return Response::json([
@@ -55,12 +63,6 @@ class ApplicationsController extends Controller
         'job_id' => $job_id
       ]);
     }
-    // if($user->role_id != 2) {
-    //   return Response::json([
-    //     'error' => 'Your account is not authorized to post job applications.',
-    //     'user' => $user
-    //   ]);
-    // }
 
     $application = new Application;
     $application->user_id = $user_id;
