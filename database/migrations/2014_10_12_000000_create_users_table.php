@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
 
             # profile form data
             $table->string('location')->default('');
-            $table->integer('phone')->default(0);
+            $table->string('phone')->default(0);
             $table->longText('bio'); // default: ""
             $table->longText('photo'); // default: ""
 
