@@ -24,8 +24,16 @@ class ApplicationsController extends Controller
 
   # job_id -> applications
   public function index($id) {
-    $applications = Application::where('job_id', '=', $id)->
-      orderBy('id', 'desc')->get();
+    $applications = Application::where('applications.job_id', '=', $id)
+      ->join('users', 'applications.user_id', '=', 'users.id')
+      ->orderBy('applications.id', 'desc')
+      ->select(
+        'applications.id', 'applications.user_id',
+        'applications.applicant_reviewed',
+        'applications.employer_approves',
+        'applications.employee_accepts',
+        'users.name')
+      ->get();
 
     return Response::json([
       'applications' => $applications->toArray()
@@ -34,15 +42,23 @@ class ApplicationsController extends Controller
 
   # user_id -> applications
   public function getUserApps($id) {
-    $applications = Application::where('user_id', '=')->
-      orderBy('id', 'desc')->get();
+    $applications = Application::where('applications.user_id', '=', $id)
+      ->join('jobs', 'applications.job_id', '=', 'jobs.id')
+      ->orderBy('applications.id', 'desc')
+      ->select(
+        'applications.id', 'applications.job_id',
+        'applications.applicant_reviewed',
+        'applications.employer_approves',
+        'applications.employee_accepts',
+        'jobs.name')
+      ->get();
 
     return Response::json([
       'applications' => $applications->toArray()
     ]);
   }
 
-  # user_id, job_id -> application
+  # token, job_id -> application
   public function store(Request $request) {
     $rules = [
       'job_id' => 'required',
@@ -55,6 +71,14 @@ class ApplicationsController extends Controller
 
     $job_id = $request->input('job_id');
     $user_id = Auth::id();
+
+    $taken = Application::where('user_id', '=', $user_id)
+              ->where('job_id', '=', $job_id)
+              ->first();
+    if(!empty($taken)) {
+      return Response::json(['error' => 'You have already applied for this job']);
+    }
+
     $job = Job::find($job_id);
     $user = User::find($user_id);
     if(empty($job)) {
