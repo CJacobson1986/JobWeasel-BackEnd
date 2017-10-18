@@ -11,11 +11,14 @@ use Auth;
 use JWTAuth;
 use App\User;
 use App\Job;
+use App\Admin;
 
 class JobsController extends Controller
 {
   public function __construct() {
-    $this->middleware('jwt.auth', ['only' => ['store', 'update']]);
+    $this->middleware('jwt.auth', ['only' => [
+      'store', 'update', 'delete'
+      ]]);
   }
 
   # ?page=pageNum -> jobs
@@ -146,8 +149,8 @@ class JobsController extends Controller
       return Response::json(['error' => 'Please fill out all fields']);
     }
 
-    $id = $request->input('userSkill_id');
-    $job = Link::find($id);
+    $id = $request->input('job_id');
+    $job = Job::find($id);
 
     if(empty($job)) {
       return Response::json(['error' => 'No job exists with that id', 'id' => $id]);
@@ -159,6 +162,8 @@ class JobsController extends Controller
     if(!$authorized) {
       return Response::json([
         'error' => 'You are not the poster of this job',
+        'user_id' => $user_id,
+        'job->user_id' => $job->user_id
       ]);
     }
 

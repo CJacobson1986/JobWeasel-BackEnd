@@ -38,6 +38,7 @@ Route::post('editJob', 'JobsController@update');
 Route::post('removeJob', 'JobsController@delete');
 
 Route::get('getApplications/{id}', 'ApplicationsController@index');
+Route::get('getUserApplications/{id}', 'ApplicationsController@getUserApps');
 Route::post('submitApplication', 'ApplicationsController@store');
 Route::post('reviewApplication', 'ApplicationsController@updateEmployer');
 Route::post('acceptOffer', 'ApplicationsController@updateEmployee');
