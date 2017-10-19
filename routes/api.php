@@ -52,5 +52,6 @@ Route::post('removeLink', 'LinksController@delete');
 Route::post('makeAdmin', 'AdminController@store');
 Route::post('removeAdmin', 'AdminController@delete');
 Route::get('getAdmins', 'AdminController@get');
+Route::get('checkAdmin/{id}', 'AdminController@check');
 
 Route::any('{path?}', 'MainController@index')->where("path", ".+");

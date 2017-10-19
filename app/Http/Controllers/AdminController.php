@@ -74,6 +74,20 @@ class AdminController extends Controller
     return Response::json(["admins" => $users]);
   }
 
+  # user_id -> admin
+  public function check($id) {
+    $admin = Admin::where('user_id', '=', $id)->first();
+
+    if(empty($admin)) {
+      return Response::json(['error' => 'This user is not an admin']);
+    }
+
+    return Response::json([
+      'success' => 'This user is an admin',
+      'admin' => $admin
+    ]);
+  }
+
   public function delete(Request $request) {
     $rules = [
       'admin_id' => 'required'
