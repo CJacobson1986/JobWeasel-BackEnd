@@ -23,7 +23,7 @@ class JobsController extends Controller
 
   # ?page=pageNum -> jobs
   public function index() {
-    $jobs = Job::orderBy('id', 'desc')->paginate(9);
+    $jobs = Job::orderBy('id', 'desc')->paginate(12);
 
     return Response::json(['jobs' => $jobs]);
   }
